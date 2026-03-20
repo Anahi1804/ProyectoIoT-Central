@@ -16,7 +16,7 @@ class Estacionamiento(object):
 
 # Usamos el puerto que nos dé Railway, o el 9090 por defecto
 puerto = int(os.environ.get("PORT", 9090))
-daemon = Pyro5.api.Daemon(host="0.0.0.0", port=puerto)
+daemon = Pyro5.api.Daemon(host="::", port=puerto)
 
 # Registramos el objeto con un nombre fácil de recordar
 uri = daemon.register(Estacionamiento, "estacionamiento.central")
