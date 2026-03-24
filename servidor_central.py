@@ -13,6 +13,8 @@ class Estacionamiento(object):
         # El flush=True obliga a Python a mostrar el print en Railway al instante
         print(f"📞 [RMI] ¡Flask me mandó datos nuevos! -> {self.cajones}", flush=True)
         return "Estado actualizado en el Servidor Central RMI"
+    def consultar_estado(self):
+        return self.cajones
 
 # Usamos el puerto que nos dé Railway, o el 9090 por defecto
 puerto = int(os.environ.get("PORT", 9090))
