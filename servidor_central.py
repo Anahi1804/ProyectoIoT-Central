@@ -20,8 +20,10 @@ class Estacionamiento(object):
 puerto = int(os.environ.get("PORT", 9090))
 daemon = Pyro5.api.Daemon(host="::", port=puerto)
 
-# Registramos el objeto con un nombre fácil de recordar
-uri = daemon.register(Estacionamiento, "estacionamiento.central")
+# Creamos al gerente ÚNICO para que no pierda la memoria
+mi_estacionamiento = Estacionamiento()
+# Registramos a ese gerente específico
+uri = daemon.register(mi_estacionamiento, "estacionamiento.central")
 
 print("="*50, flush=True)
 print("🏢 SERVIDOR CENTRAL RMI INICIADO EN LA NUBE 🏢", flush=True)
